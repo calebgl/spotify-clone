@@ -68,7 +68,7 @@ export default function RootLayout({
             </div>
           </nav>
         </aside>
-        <main className="[grid-area:main]">
+        <main className="min-h-0 overflow-y-scroll [grid-area:main]">
           <div className="h-full rounded-lg bg-[#121212] px-3 py-2">
             {children}
           </div>

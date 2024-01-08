@@ -10,7 +10,7 @@ type NavLinkProps = {
   href: string;
 };
 
-export default function NavLink({ href, children }: NavLinkProps) {
+export default function NavLinkButton({ href, children }: NavLinkProps) {
   const pathname = usePathname();
   return (
     <li className="px-3 py-1">

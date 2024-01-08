@@ -2,9 +2,13 @@ import { clsx } from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import NavLink from "~/components/NavLink";
+import NavLinkAlbum from "~/components/NavLinkAlbum";
+import NavLinkArtist from "~/components/NavLinkArtist";
+import NavLinkButton from "~/components/NavLinkButton";
+import NavLinkPlaylist from "~/components/NavLinkPlaylist";
 import Home from "~/icons/Home";
 import Search from "~/icons/Search";
+import { list } from "~/lib/api";
 
 import "./globals.css";
 
@@ -32,18 +36,35 @@ export default function RootLayout({
           <nav className="flex h-full flex-col gap-2">
             <div className="rounded-lg bg-[#121212] px-3 py-2">
               <ul className="grid items-center">
-                <NavLink href="/">
+                <NavLinkButton href="/">
                   <Home />
                   <p>Home</p>
-                </NavLink>
-                <NavLink href="/search">
+                </NavLinkButton>
+                <NavLinkButton href="/search">
                   <Search />
                   <p>Search</p>
-                </NavLink>
+                </NavLinkButton>
               </ul>
             </div>
             <div className="flex h-full min-h-0 flex-col rounded-lg bg-[#121212] px-3 py-2">
               <p>aside</p>
+              <ul className="overflow-y-scroll">
+                {list.map((item) => {
+                  switch (item.type) {
+                    case "album":
+                      return <NavLinkAlbum album={item} key={item.id} />;
+
+                    case "artist":
+                      return <NavLinkArtist artist={item} key={item.id} />;
+
+                    case "playlist":
+                      return <NavLinkPlaylist playlist={item} key={item.id} />;
+
+                    default:
+                      throw new Error("not found");
+                  }
+                })}
+              </ul>
             </div>
           </nav>
         </aside>

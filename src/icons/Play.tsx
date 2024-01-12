@@ -1,10 +1,12 @@
-type PlayProps = {
-  className?: string;
-};
+import type { SVGProps } from "react";
 
-export default function Play({ className }: PlayProps) {
+type PlayProps = SVGProps<SVGSVGElement>;
+
+export default function Play({ className, ...props }: PlayProps) {
   return (
     <svg
+      {...props}
+      fill="currentColor"
       role="img"
       aria-hidden="true"
       viewBox="0 0 24 24"

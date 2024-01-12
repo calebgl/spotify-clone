@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@radix-ui/react-slider": "^1.1.2",
     "@tailwindcss/line-clamp": "^0.4.4",
     "clsx": "^2.1.0",
     "next": "14.0.4",

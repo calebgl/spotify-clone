@@ -6,6 +6,7 @@ import NavLinkAlbum from "~/components/NavLinkAlbum";
 import NavLinkArtist from "~/components/NavLinkArtist";
 import NavLinkButton from "~/components/NavLinkButton";
 import NavLinkPlaylist from "~/components/NavLinkPlaylist";
+import Player from "~/components/Player";
 import Home from "~/icons/Home";
 import Search from "~/icons/Search";
 import { list } from "~/lib/api";
@@ -73,8 +74,10 @@ export default function RootLayout({
             {children}
           </div>
         </main>
-        <footer className="[grid-area:player]">
-          <div className="h-24 p-2">player</div>
+        <footer className="max-h-[4.5rem] [grid-area:player]">
+          <div className="h-full p-2 pt-0">
+            <Player />
+          </div>
         </footer>
       </body>
     </html>

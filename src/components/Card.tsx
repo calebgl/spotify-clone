@@ -25,7 +25,7 @@ export default function Card({ item }: CardProps) {
           alt="cover"
           src={item.cover}
         />
-        <PlayButton className="absolute bottom-2 right-2 translate-y-4 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100" />
+        <PlayButton className="absolute bottom-2 right-2 translate-y-4 text-black opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100" />
       </picture>
       <div>
         <p className="font-bold">{item.title}</p>

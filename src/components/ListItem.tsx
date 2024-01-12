@@ -15,7 +15,7 @@ export default function ListItem({ item }: ListItemProps) {
           alt="cover"
           src={item.cover}
         />
-        <PlayButton className="absolute bottom-0 right-0 top-0 scale-[0.7] opacity-0 transition-all group-hover:opacity-100" />
+        <PlayButton className="absolute bottom-0 right-0 top-0 scale-[0.7] text-black opacity-0 transition-all group-hover:opacity-100" />
       </picture>
       <div>
         <p className="text-sm font-bold">{item.title}</p>

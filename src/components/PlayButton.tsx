@@ -8,7 +8,7 @@ export default function PlayButton({ className }: PlayButtonProps) {
   return (
     <button
       className={cn(
-        "aspect-square rounded-full bg-[#1ed760] p-3 transition-colors duration-300 ease-out hover:bg-[#1fdf64] active:bg-[#169c46]",
+        "aspect-square rounded-full bg-primary p-3 transition-colors duration-300 ease-out hover:bg-primary-hover active:bg-primary-active",
         className,
       )}
     >

@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex h-full flex-col gap-6 overflow-y-scroll">
       <Header />
-      <div className="flex flex-col gap-10 px-6 pb-4">
+      <div className="flex flex-col gap-10 px-5 pb-2">
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-bold">Good evening</h1>
           <ul className="grid grid-cols-3 gap-2">

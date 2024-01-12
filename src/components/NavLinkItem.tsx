@@ -36,7 +36,7 @@ NavLinkItem.Image = function Image({ className, src }: ImageProps) {
     <picture>
       <img
         alt="cover"
-        className={cn("h-12 w-12 rounded-sm object-cover", className)}
+        className={cn("h-12 w-12 rounded-md object-cover", className)}
         src={src}
       />
     </picture>

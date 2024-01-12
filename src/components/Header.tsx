@@ -8,7 +8,7 @@ import Button from "./Button";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 flex justify-between rounded-t-lg p-4 px-6 py-4">
+    <header className="sticky top-0 z-50 flex justify-between rounded-t-lg p-4 px-5 py-4">
       <div className="flex gap-2">
         <Button className="aspect-square w-8 text-white">
           <ArrowLeft className="h-4 w-4" />

@@ -7,6 +7,7 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
       },
       { protocol: "https", hostname: "lofigirl.com" },
+      { protocol: "https", hostname: "open.spotifycdn.com" },
     ],
   },
 };

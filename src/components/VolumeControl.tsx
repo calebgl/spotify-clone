@@ -13,11 +13,6 @@ export default function VolumeControl() {
   const [volume, setVolume] = useState(30);
   const previousVolumeRef = useRef<number>(0);
 
-  useEffect(() => {
-    const audio = new Audio();
-    audio.volume = 0;
-  }, []);
-
   const handleMute = () => {
     setVolume(0);
     previousVolumeRef.current = volume;

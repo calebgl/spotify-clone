@@ -1,26 +1,10 @@
 import Card from "~/components/Card";
 import Header from "~/components/Header";
 import ListItem from "~/components/ListItem";
-import { list } from "~/lib/api";
-import type { Album, Playlist } from "~/lib/api";
+import { getLists } from "~/lib/api";
 
-export default function Home() {
-  const { albums, playlists } = list.reduce<{
-    albums: Album[];
-    playlists: Playlist[];
-  }>(
-    (acc, curr) => {
-      const { albums, playlists } = acc;
-      if (curr.type === "playlist") {
-        playlists.push(curr);
-      } else if (curr.type === "album") {
-        albums.push(curr);
-      }
-      return { albums, playlists };
-    },
-    { albums: [], playlists: [] },
-  );
-
+export default async function Home() {
+  const { playlists, albums } = await getLists();
   return (
     <div className="flex h-full flex-col gap-6 overflow-y-scroll">
       <Header />

@@ -1,51 +1,38 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 import VolumeHigh from "~/icons/VolumeHigh";
 import VolumeLow from "~/icons/VolumeLow";
 import VolumeMedium from "~/icons/VolumeMedium";
 import VolumeMuted from "~/icons/VolumeMuted";
+import { usePlayerStore } from "~/stores/player";
 
 import Slider from "./Slider";
 
 export default function VolumeControl() {
-  const [volume, setVolume] = useState(30);
-  const previousVolumeRef = useRef<number>(0);
+  const volume = usePlayerStore((state) => state.volume);
 
-  const handleMute = () => {
-    setVolume(0);
-    previousVolumeRef.current = volume;
-  };
+  const mute = usePlayerStore((state) => state.mute);
+  const unmute = usePlayerStore((state) => state.unmute);
+  const changeVolume = usePlayerStore((state) => state.changeVolume);
 
-  const handleUnmute = () => {
-    setVolume(previousVolumeRef.current);
-    previousVolumeRef.current = volume;
+  const handleVolume = (value: number[]) => {
+    const [newVolume] = value;
+    changeVolume(newVolume);
   };
 
   const Volume = () => {
     if (volume === 0) {
       return (
-        <VolumeMuted
-          className="h-4 w-4 text-neutral-400"
-          onClick={handleUnmute}
-        />
+        <VolumeMuted className="h-4 w-4 text-neutral-400" onClick={unmute} />
       );
     } else if (volume > 0 && volume < 30) {
-      return (
-        <VolumeLow className="h-4 w-4 text-neutral-400" onClick={handleMute} />
-      );
+      return <VolumeLow className="h-4 w-4 text-neutral-400" onClick={mute} />;
     } else if (volume >= 30 && volume < 60) {
       return (
-        <VolumeMedium
-          className="h-4 w-4 text-neutral-400"
-          onClick={handleMute}
-        />
+        <VolumeMedium className="h-4 w-4 text-neutral-400" onClick={mute} />
       );
     } else {
-      return (
-        <VolumeHigh className="h-4 w-4 text-neutral-400" onClick={handleMute} />
-      );
+      return <VolumeHigh className="h-4 w-4 text-neutral-400" onClick={mute} />;
     }
   };
 
@@ -57,10 +44,7 @@ export default function VolumeControl() {
         max={100}
         min={0}
         value={[volume]}
-        onValueChange={(value) => {
-          const [newVolume] = value;
-          setVolume(newVolume);
-        }}
+        onValueChange={handleVolume}
       />
     </div>
   );

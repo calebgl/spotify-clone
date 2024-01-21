@@ -96,6 +96,13 @@ export const list: (Playlist | Album | Artist)[] = [
     artists: ["Thaehan"],
     songs: [
       { id: "b7b36e79-534b-458f-ae9e-0feba6160413", title: "Witches Arise" },
+      { id: "094b1aec-7ec9-409a-97fa-e551d1af169c", title: "Haunted Carousel" },
+      {
+        id: "cbe16aba-1e14-4532-8a95-29284aa5a63c",
+        title: "Fade Into Darkness",
+      },
+      { id: "a7498434-4ec6-4e70-bdae-e91fecde9680", title: "Ghostly Whispers" },
+      { id: "e0279bc1-efbd-4003-9f3d-8aa3bd43c234", title: "Skeletons" },
     ],
   },
   {
@@ -105,7 +112,19 @@ export const list: (Playlist | Album | Artist)[] = [
     type: "album",
     title: "Sleeping Soul",
     artists: ["Tenno"],
-    songs: [{ id: "", title: "" }],
+    songs: [
+      { id: "18bbfa29-79f2-41d8-b0b3-832229abb220", title: "Breathing Stone" },
+      { id: "e7dfcbc6-4259-4f2e-a54e-202dea7ea2a2", title: "Eternal Beauty" },
+      {
+        id: "5d08d803-e434-46cf-91ad-1c9e73f09261",
+        title: "Pagoda in the Mist",
+      },
+      { id: "eda2452c-18b6-4e9a-843d-02e9a738db7f", title: "Reflecting" },
+      {
+        id: "18cc1d5a-fc88-4a10-a614-7612ac1a6181",
+        title: "Theme of the Swaying Forest",
+      },
+    ],
   },
   {
     id: "0195d88d-4b7b-4fa0-b7b9-8dd7b3d0488d",

@@ -10,7 +10,6 @@ import Slider from "./Slider";
 
 export default function VolumeControl() {
   const volume = usePlayerStore((state) => state.volume);
-
   const mute = usePlayerStore((state) => state.mute);
   const unmute = usePlayerStore((state) => state.unmute);
   const changeVolume = usePlayerStore((state) => state.changeVolume);
@@ -23,21 +22,37 @@ export default function VolumeControl() {
   const Volume = () => {
     if (volume === 0) {
       return (
-        <VolumeMuted className="h-4 w-4 text-neutral-400" onClick={unmute} />
+        <VolumeMuted
+          className="h-8 w-8 cursor-pointer p-2 text-neutral-400"
+          onClick={unmute}
+        />
       );
     } else if (volume > 0 && volume < 30) {
-      return <VolumeLow className="h-4 w-4 text-neutral-400" onClick={mute} />;
+      return (
+        <VolumeLow
+          className="h-8 w-8 cursor-pointer p-2 text-neutral-400"
+          onClick={mute}
+        />
+      );
     } else if (volume >= 30 && volume < 60) {
       return (
-        <VolumeMedium className="h-4 w-4 text-neutral-400" onClick={mute} />
+        <VolumeMedium
+          className="h-8 w-8 cursor-pointer p-2 text-neutral-400"
+          onClick={mute}
+        />
       );
     } else {
-      return <VolumeHigh className="h-4 w-4 text-neutral-400" onClick={mute} />;
+      return (
+        <VolumeHigh
+          className="h-8 w-8 cursor-pointer p-2 text-neutral-400"
+          onClick={mute}
+        />
+      );
     }
   };
 
   return (
-    <div className="group flex gap-2">
+    <div className="group flex">
       <Volume />
       <Slider
         className="w-24"

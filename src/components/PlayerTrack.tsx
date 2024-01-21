@@ -20,6 +20,7 @@ function formatTime(time: number) {
 export default function PlayerTrack() {
   const [currentTime, setCurrentTime] = useState(0);
   const audio = usePlayerStore((state) => state.audio);
+  const next = usePlayerStore((state) => state.next);
   const duration = audio?.duration ?? 0;
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function PlayerTrack() {
     }
 
     const handleTimeUpdate = () => setCurrentTime(audio.currentTime ?? 0);
-    const handleEnded = () => {};
+    const handleEnded = () => next();
 
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnded);
@@ -36,7 +37,7 @@ export default function PlayerTrack() {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [audio]);
+  }, [audio, next]);
 
   const handleValueChange = (value: number[]) => {
     if (!audio) {

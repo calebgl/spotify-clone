@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import type { ElementRef } from "react";
 
 import Next from "~/icons/Next";
 import Pause from "~/icons/Pause";
@@ -10,39 +8,19 @@ import Play from "~/icons/Play";
 import Previous from "~/icons/Previous";
 import { usePlayerStore } from "~/stores/player";
 
-import Slider from "./Slider";
+import PlayerTrack from "./PlayerTrack";
 import VolumeControl from "./VolumeControl";
 
 export default function Player() {
-  const [currentTime, setCurrentTime] = useState(0);
-
-  const audioRef = useRef<ElementRef<"audio">>(null!);
-
-  const song = usePlayerStore((state) => state.song);
-  const volume = usePlayerStore((state) => state.volume);
-  const isPlaying = usePlayerStore((state) => state.isPlaying);
-
+  const currently = usePlayerStore((state) => state.currently);
   const pause = usePlayerStore((state) => state.pause);
-  const play = usePlayerStore((state) => state.play);
-
-  useEffect(() => {
-    audioRef.current.volume = volume / 100;
-  }, [volume]);
-
-  useEffect(() => {
-    if (!song) {
-      return;
-    }
-
-    audioRef.current.src = song;
-  }, [song]);
-
-  useEffect(() => {
-    isPlaying ? audioRef.current.play() : audioRef.current.pause();
-  }, [isPlaying]);
+  const resume = usePlayerStore((state) => state.resume);
+  const next = usePlayerStore((state) => state.next);
+  const previous = usePlayerStore((state) => state.previous);
+  const isPlaying = currently === "playing";
 
   const handleClick = () => {
-    isPlaying ? pause() : play();
+    isPlaying ? pause() : resume();
   };
 
   return (
@@ -66,7 +44,10 @@ export default function Player() {
       </div>
       <div className="col-span-6 grid place-items-center gap-2">
         <div className="flex items-center gap-5">
-          <Previous className="h-4 w-4 text-[#ffffffb3]" />
+          <Previous
+            className="h-4 w-4 cursor-pointer text-[#ffffffb3] transition-colors hover:text-white"
+            onClick={previous}
+          />
           <div
             className="grid h-7 w-7 cursor-pointer place-content-center rounded-full bg-white p-2 text-black"
             onClick={handleClick}
@@ -76,12 +57,14 @@ export default function Player() {
             ) : (
               <Play className="h-4 w-4" />
             )}
-            <audio ref={audioRef} />
           </div>
-          <Next className="h-4 w-4 text-[#ffffffb3]" />
+          <Next
+            className="h-4 w-4 cursor-pointer text-[#ffffffb3] transition-colors hover:text-white"
+            onClick={next}
+          />
         </div>
-        <div className="group flex h-4 w-full justify-center">
-          <Slider className="w-2/3" />
+        <div className="h-4 w-full">
+          <PlayerTrack />
         </div>
       </div>
       <div className="col-span-3 grid w-full justify-items-end">

@@ -39,8 +39,7 @@ export default function Card({ item }: CardProps) {
     } else if (isPaused) {
       resume();
     } else {
-      const [song] = item.songs;
-      play(song?.title ?? "", item.id);
+      play(item.id);
     }
   };
 
